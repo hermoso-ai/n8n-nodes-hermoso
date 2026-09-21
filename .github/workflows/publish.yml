@@ -1,0 +1,32 @@
+# Publishes n8n-nodes-hermoso to npm with a provenance statement (required for n8n verification).
+# Auth is npm trusted publishing (OIDC): no token is stored in this repository.
+# Release: bump "version" in package.json and CHANGELOG.md, then push a tag v<version>
+# (or run this workflow by hand from the Actions tab).
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - name: Tag matches package.json
+        if: github.event_name == 'push'
+        run: |
+          V="$(node -p "require('./package.json').version")"
+          [ "v$V" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME != v$V"; exit 1; }
+      - run: npm run lint && npm run build
+      - run: npm publish --provenance --access public --ignore-scripts
