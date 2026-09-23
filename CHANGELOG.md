@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.3
+
+- Node codex category corrected to "Marketing & Content" on both nodes (the previous value, "Marketing", is not a
+  recognised n8n category and was dropped, so the nodes showed with no category).
+- `npm run lint` now also checks every codex category against n8n's list.
+
 ## 0.1.2
 
 - Source moved to its own repository, hermoso-ai/n8n-nodes-hermoso, published from GitHub Actions with npm provenance.

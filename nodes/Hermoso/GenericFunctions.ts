@@ -11,7 +11,7 @@ import { NodeApiError } from 'n8n-workflow';
 
 // The Hermoso REST API. Described live at https://app.hermoso.ai/openapi.json
 export const BASE_URL = 'https://app.hermoso.ai/v1';
-export const USER_AGENT = 'n8n-nodes-hermoso/0.1.0';
+export const USER_AGENT = 'n8n-nodes-hermoso/0.1.3';
 
 const ASSET_HOSTS = ['assets.hermoso.ai', 'app.hermoso.ai'];
 

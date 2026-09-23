@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-hermoso",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "n8n nodes for Hermoso: create on-brand image and video ads, schedule social posts, and react to new library files and posts.",
   "license": "MIT",
   "homepage": "https://hermoso.ai",
@@ -26,7 +26,7 @@
     "build": "n8n-node build",
     "build:watch": "tsc --watch",
     "dev": "n8n-node dev",
-    "lint": "n8n-node lint",
+    "lint": "n8n-node lint && node scripts/check-codex.mjs",
     "lint:fix": "n8n-node lint --fix",
     "release": "n8n-node release",
     "prepublishOnly": "n8n-node prerelease"
